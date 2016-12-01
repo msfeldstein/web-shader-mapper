@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "budo index.js -o -l",
+    "start": "budo index.js -o -l -- -t brfs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@msfeldstein/full-screen-canvas": "^1.0.1",
+    "brfs": "^1.4.3",
     "three": "^0.82.1",
     "touch": "^1.0.0",
     "touches": "^1.2.0",

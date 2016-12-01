@@ -1,12 +1,9 @@
 var canvas = require("@msfeldstein/full-screen-canvas")()
+var fs = require('fs')
 window.THREE = require('three')
 window.Tween = require('tween')
 var Touches = require("touches")
 var Sprite = require('./Sprite')
-
-
-
-canvas.style.backgroundColor = 'red'
 
 var width = canvas.width
 var height = canvas.height
@@ -22,14 +19,22 @@ var scene = new THREE.Scene()
 var camera = new THREE.OrthographicCamera(0 , width , height , 0 , 0, 100)
 camera.position.z = 1
 
-
-var quad = new Sprite.Quad(canvas)
+var material = new THREE.ShaderMaterial({
+  uniforms: {
+    time: {type: 'f', value: 0},
+    resolution: {type: 'v2', value: new THREE.Vector2(canvas.width, canvas.height)}
+  },
+  fragmentShader: fs.readFileSync('frag.fs').toString(),
+  vertexShader: fs.readFileSync('./standard.vs').toString()
+})
+var quad = new Sprite.Quad(canvas, material)
 
 scene.add(quad.obj)
 quad.update()
 
 var render = function(t) {
   requestAnimationFrame(render)
+  material.uniforms.time.value = t / 1000
   quad.update()
   renderer.render(scene, camera)
   Tween.update(t)
