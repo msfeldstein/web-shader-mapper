@@ -1,0 +1,22 @@
+{
+  "name": "web-projection-mapping",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "budo index.js -o -l",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "budo": "^9.2.2"
+  },
+  "dependencies": {
+    "@msfeldstein/full-screen-canvas": "^1.0.1",
+    "three": "^0.82.1",
+    "touch": "^1.0.0",
+    "touches": "^1.2.0",
+    "tween": "^0.9.0"
+  }
+}
