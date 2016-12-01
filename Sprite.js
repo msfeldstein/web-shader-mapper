@@ -1,4 +1,8 @@
+var TouchHandlerInit = require('./QuadTouchHandler')
+
 var Tween = window.Tween
+
+var Initialized = false
 
 var Dot = function(x, y) {
   var dotSize = 30
@@ -15,7 +19,8 @@ var Dot = function(x, y) {
   return plane  
 }
 
-var Quad = function(canvas, material) {
+var Quad = function(canvas, scene, camera, material) {
+  if (!Initialized) Initialized = TouchHandlerInit(scene, camera)
   var width = canvas.width
   var height = canvas.height
   
